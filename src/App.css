@@ -8,8 +8,10 @@
    --gray2: #868686;
    --white1: #fff;
    --purple1: #3927ff;
+   --purple2: #cb84fb;
    --orange1: #ffa883;
    --fzS: 16px;
    --fzM: 18px;
    --fzL: 20px;
+   --liner: linear-gradient(to right, rgba(57, 39, 255, 0.1), rgba(255, 168, 131, 0.1));
 }

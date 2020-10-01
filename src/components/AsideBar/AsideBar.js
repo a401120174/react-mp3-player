@@ -9,13 +9,22 @@ const Wrapper = styled.aside`
    height: 100vh;
    display: flex;
    flex-direction: column;
+   position: relative;
+   z-index: 2;
+   box-shadow: 5px 0px 15px rgba(0, 0, 0, 0.4);
 `;
 
 const Title = styled.div`
    background-color: var(--black1);
    padding: 20px 25px;
-   color: var(--gray1);
+   color: var(--white1);
    font-size: var(--fzM);
+   display: flex;
+   align-items: center;
+   font-weight: bold;
+   i {
+      margin-right: 10px;
+   }
 `;
 
 const Ul = styled.ul`
@@ -28,15 +37,7 @@ const Li = styled.li`
    color: var(--gray2);
    font-size: var(--fzS);
    color: ${(props) => (props.active ? "var(--white1)" : "var(--gray1)")};
-   background: ${(props) =>
-      props.active
-         ? `linear-gradient(
-   to right,
-   rgba(57, 39, 255, 0.1),
-   rgba(255, 168, 131, 0.1)
-)`
-         : ""};
-
+   background: ${(props) => (props.active ? `var(--liner)` : "")};
    &:hover {
       color: #e3b8ff;
       text-shadow: 0 0px 15px #bf89e2;
@@ -59,43 +60,45 @@ const NowPlaying = styled.div`
    }
    .album {
       padding: 0 25px;
-      color: var(--gray1);
+      color: var(--orange1);
       font-size: var(--fzM);
       flex-grow: 1;
+      text-shadow: 0 0px 7px #f5705d;
       background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
    }
    .song {
       padding: 16px 25px;
-      color: var(--white1);
+      color: var(--purple2);
       font-size: var(--fzL);
+      text-shadow: 0 0px 7px #811dc5;
       background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0));
    }
 `;
 
 const AsideBar = () => {
-   const {
-      albums,
-      activeAlbum,
-      setActiveAlbum,
-      songs,
-      activeSong,
-      setActiveSong,
-   } = useContext(ContextStore);
-   // const albums = [];
+   const { globalState, setGlobalState } = useContext(ContextStore);
+   const { albums, activeAlbum, nowPlaying } = globalState;
+
    return (
       <Wrapper>
-         <Title>My Albums</Title>
+         <Title>
+            <i class="material-icons">library_music</i>
+            <span>My Albums</span>
+         </Title>
          <Ul>
             {albums.map((li, idx) => (
-               <Li onClick={() => setActiveAlbum(idx)} active={idx === activeAlbum}>
+               <Li
+                  onClick={() => setGlobalState({ activeAlbum: idx })}
+                  active={idx === activeAlbum}
+               >
                   {li}
                </Li>
             ))}
          </Ul>
          <NowPlaying>
-            <div className="title">現在播放</div>
-            <div className="album">{albums[activeAlbum]}</div>
-            <div className="song">{songs[albums[activeAlbum]][activeSong].name}</div>
+            <div className="title">Now Playing</div>
+            <div className="album">{nowPlaying.album}</div>
+            <div className="song">{nowPlaying.song}</div>
          </NowPlaying>
       </Wrapper>
    );

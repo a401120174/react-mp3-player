@@ -1,8 +1,5 @@
 import React, { createContext } from "react";
 
-const ContextStore = createContext({
-   albums: ["Maroon 5", "Jay", "Louis"],
-   activeAlbum: 0,
-});
+const ContextStore = createContext({});
 
 export default ContextStore;
