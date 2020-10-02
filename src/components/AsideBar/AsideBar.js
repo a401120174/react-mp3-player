@@ -5,7 +5,7 @@ import { useAudio } from "../../context/audioContext";
 import ContextStore from "../../context/globalContext";
 
 const Wrapper = styled.aside`
-   width: 200px;
+   width: 220px;
    background-color: var(--black3);
    height: 100vh;
    display: flex;
@@ -47,7 +47,7 @@ const Li = styled.li`
 
 const NowPlaying = styled.div`
    height: 210px;
-   background-image: url("./img/${(props) => props.img}.jpg");
+   background-image: url("./react-mp3-player/img/${(props) => props.img}.jpg");
    background-size: cover;
    background-position: center;
    display: flex;
@@ -106,7 +106,11 @@ const AsideBar = () => {
          </Ul>
          <NowPlaying img={nowPlaying.album} playing={!state.paused}>
             <div className="title">
-               Now Playing <img src="./img/animated-sound-bars.gif" alt="animated"></img>
+               Now Playing{" "}
+               <img
+                  src="./react-mp3-player/img/animated-sound-bars.gif"
+                  alt="animated"
+               ></img>
             </div>
             <div className="album">{nowPlaying.album}</div>
             <div className="song">{nowPlaying.song}</div>

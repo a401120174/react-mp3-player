@@ -32,7 +32,7 @@ const Content = styled.div`
 const Background = styled.div`
    background-color: green;
    height: 40%;
-   background-image: url("./img/${(props) => props.img}.jpg");
+   background-image: url("./react-mp3-player/img/${(props) => props.img}.jpg");
    background-size: cover;
    background-position: center;
    position: relative;
@@ -156,7 +156,7 @@ const Main = () => {
             <PlayList>
                <MusicDesc>
                   <div className="left">
-                     <img src={`./img/${album}.jpg`} alt="album"></img>
+                     <img src={`./react-mp3-player/img/${album}.jpg`} alt="album"></img>
                   </div>
                   <div className="mid">
                      <div className="album">{album}</div>

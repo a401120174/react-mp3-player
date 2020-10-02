@@ -41,7 +41,7 @@ const AudioProvider = ({ src, children }) => {
    }, [src]);
 
    const element = React.createElement("audio", {
-      src: `./song/${src}.mp3`,
+      src: `./react-mp3-player/song/${src}.mp3`,
       controls: false,
       id: "audio",
       ref,

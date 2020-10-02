@@ -29,7 +29,7 @@ const DynamicSong = () => {
    useEffect(() => {
       const getText = async () => {
          setLoading(true);
-         fetch(`/lrc/${state.src}.txt`)
+         fetch(`./react-mp3-player/lrc/${state.src}.txt`)
             .then((r) => r.text())
             .then((text) => {
                const songArr = text.split("\n").map((str) => {
