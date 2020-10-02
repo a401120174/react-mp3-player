@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { albumImg } from "../../source";
 
+import { albumImg } from "../../source";
+import Gif from "../../static/img/animated-sound-bars.gif";
 import { useAudio } from "../../context/audioContext";
 import ContextStore from "../../context/globalContext";
 
@@ -109,8 +110,7 @@ const AsideBar = () => {
          </Ul>
          <NowPlaying img={nowPlaying.album} playing={!state.paused}>
             <div className="title">
-               Now Playing{" "}
-               <img src="../static/img/animated-sound-bars.gif" alt="animated"></img>
+               Now Playing <img src={Gif} alt="animated"></img>
             </div>
             <div className="album">{nowPlaying.album}</div>
             <div className="song">{nowPlaying.song}</div>
