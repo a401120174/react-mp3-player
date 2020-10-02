@@ -1,4 +1,4 @@
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useContext } from "react";
 import { useAudio } from "../../context/audioContext";
 import styled from "styled-components";
 
@@ -17,6 +17,16 @@ const Wrapper = styled.div`
 const Content = styled.div`
    background-color: var(--black2);
    flex-grow: 1;
+   overflow: auto;
+   &::-webkit-scrollbar {
+      width: 12px;
+      background-color: var(--gray2);
+   }
+
+   &::-webkit-scrollbar-thumb {
+      box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      background-color: #555;
+   }
 `;
 
 const Background = styled.div`
@@ -40,19 +50,19 @@ const Background = styled.div`
 `;
 
 const PlayList = styled.div`
-   padding: 0 55px;
+   padding: 0 55px 55px;
    position: relative;
    z-index: 2;
 `;
 
 const MusicDesc = styled.div`
-   margin: -130px 0 50px;
+   margin: -100px 0 50px;
    display: flex;
    .left {
       width: 185px;
       height: 185px;
       background-color: red;
-      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.6);
+      box-shadow: 3px 6px 10px rgba(0, 0, 0, 0.6);
       img {
          width: 185px;
          height: 185px;
@@ -63,9 +73,13 @@ const MusicDesc = styled.div`
       padding-left: 25px;
       color: var(--white1);
       flex-grow: 1;
+      font-weight: bold;
       .album {
          font-size: 40px;
-         margin-bottom: 35px;
+         margin-bottom: 30px;
+      }
+      .singer {
+         color: var(--gray1);
       }
    }
 `;
@@ -76,6 +90,8 @@ const StyledItem = styled.li`
    color: var(--white1);
    padding: 15px 25px;
    display: flex;
+   font-size: 18px;
+   align-items: center;
    background-color: ${(props) =>
       props.idx % 2 === 1 ? "var(--black2)" : "var(--black3)"};
    > div {
@@ -87,10 +103,11 @@ const StyledItem = styled.li`
    i {
       opacity: ${(props) => (props.isPlaying ? 1 : 0)};
       cursor: pointer;
-      font-size: 25px;
+      font-size: 24px;
    }
    .name {
       flex-grow: 1;
+      text-align: center;
    }
    &:hover {
       background: var(--liner);
@@ -105,19 +122,19 @@ const Item = ({ name, time, isPlaying, onClick, idx }) => {
       <StyledItem idx={idx} isPlaying={isPlaying}>
          <div>{idx + 1}</div>
          <div className="play" onClick={() => onClick(idx)}>
-            <i class="material-icons">
+            <i className="material-icons">
                {isPlaying ? "pause_circle_outline" : "play_circle_outline"}
             </i>
          </div>
          <div className="name">{name}</div>
-         <div>{time}05:30</div>
+         <div>{time}</div>
       </StyledItem>
    );
 };
 
 const Main = () => {
    const { globalState, setGlobalState } = useContext(ContextStore);
-   const { albums, activeAlbum, songs, activeSong, nowPlaying } = globalState;
+   const { albums, activeAlbum, songs, nowPlaying } = globalState;
 
    const { state, controls } = useAudio();
 
@@ -125,8 +142,11 @@ const Main = () => {
    const album = albums[activeAlbum];
 
    const handleClickPlay = (idx) => {
-      setGlobalState({ nowPlaying: { album, song: activeSongs[idx].name } });
-      state.paused ? controls.play() : controls.pause();
+      if (nowPlaying.song === activeSongs[idx].name) {
+         state.paused ? controls.play() : controls.pause();
+      } else {
+         setGlobalState({ nowPlaying: { album, song: activeSongs[idx].name, idx } });
+      }
    };
 
    return (
@@ -136,15 +156,11 @@ const Main = () => {
             <PlayList>
                <MusicDesc>
                   <div className="left">
-                     <img src={`./img/${album}.jpg`}></img>
+                     <img src={`./img/${album}.jpg`} alt="album"></img>
                   </div>
                   <div className="mid">
                      <div className="album">{album}</div>
-                     <div className="singer">平到</div>
-                  </div>
-                  <div className="right">
-                     <div>+ 新增至我的專輯</div>
-                     <div>6</div>
+                     <div className="singer">Red Pill Blues</div>
                   </div>
                </MusicDesc>
                <List>

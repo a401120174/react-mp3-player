@@ -24,15 +24,26 @@ const AudioProvider = ({ src, children }) => {
       paused: true,
       waiting: false,
       playbackRate: 1,
-
       endedCallback: null,
+      src: "",
+      volume: 100,
    });
    const setState = (partState) => setOrgState({ ...state, ...partState });
    const ref = useRef(null);
+   const firstTime = useRef(true);
+
+   useEffect(() => {
+      setState({ src });
+      if (!firstTime.current) {
+         controls.play();
+      }
+      firstTime.current = false;
+   }, [src]);
 
    const element = React.createElement("audio", {
-      src,
+      src: `./song/${src}.mp3`,
       controls: false,
+      id: "audio",
       ref,
       onPlay: () => setState({ paused: false }),
       onPause: () => setState({ paused: true }),
@@ -75,7 +86,6 @@ const AudioProvider = ({ src, children }) => {
          if (!el) {
             return undefined;
          }
-
          if (!lockPlay) {
             const promise = el.play();
             const isPromise = typeof promise === "object";
@@ -128,6 +138,18 @@ const AudioProvider = ({ src, children }) => {
 
          setState({
             time,
+         });
+      },
+      setVolume: (percent) => {
+         const el = ref.current;
+         if (!el) {
+            return;
+         }
+
+         el.volume = (percent / 100).toFixed(1);
+
+         setState({
+            volume: percent.toFixed(1),
          });
       },
       setEndedCallback: (callback) => {

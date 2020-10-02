@@ -1,7 +1,7 @@
 import "./App.css";
 import { ResetStyle, GlobalStyle } from "./globalStyle";
 
-import React, { useState, useContext, useCallback, useEffect } from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 import AsideBar from "./components/AsideBar/AsideBar";
@@ -16,24 +16,50 @@ const StyledApp = styled.main`
 `;
 
 const initState = {
-   albums: ["Maroon 5", "Jay", "Louis"],
+   albums: ["Maroon 5", "Alan Walker", "Coldplay", "Ariana Grande"],
    songs: {
-      "Maroon 5": [{ name: "Sugar" }, { name: "A" }, { name: "B" }],
-      Louis: [{ name: "C" }, { name: "D" }],
-      Jay: [{ name: "E" }, { name: "F" }],
+      "Maroon 5": [
+         { name: "One More Night", time: "03:42" },
+         { name: "Girls Like You", time: "03:53" },
+         { name: "Harder To Breathe", time: "02:55" },
+         { name: "Memories", time: "03:09" },
+         { name: "Nobody's Love", time: "03:30" },
+      ],
+      "Alan Walker": [
+         { name: "Faded", time: "03:32" },
+         { name: "Different World", time: "03:42" },
+         { name: "All Falls Down", time: "03:40" },
+         { name: "Baby Don't Go", time: "03:30" },
+         { name: "Diamond Heart", time: "03:38" },
+      ],
+      Coldplay: [
+         { name: "One More Night", time: "03:42" },
+         { name: "Girls Like You", time: "03:53" },
+         { name: "Harder To Breathe", time: "02:55" },
+         { name: "Memories", time: "03:09" },
+         { name: "Nobody's Love", time: "03:30" },
+      ],
+      "Ariana Grande": [
+         { name: "Faded", time: "03:32" },
+         { name: "Different World", time: "03:42" },
+         { name: "All Falls Down", time: "03:40" },
+         { name: "Baby Don't Go", time: "03:30" },
+         { name: "Diamond Heart", time: "03:38" },
+      ],
    },
    activeAlbum: 0,
    activeSong: 0,
    nowPlaying: {
       album: "Maroon 5",
-      song: "Sugar",
+      song: "One More Night",
+      idx: 0,
    },
 };
 
 function App() {
    const [state, setState] = useState(initState);
    const setGlobalState = (partState) => setState({ ...state, ...partState });
-   const { songs, albums, activeAlbum, activeSong, nowPlaying } = state;
+   const { nowPlaying } = state;
 
    return (
       <ContextStore.Provider
@@ -42,7 +68,7 @@ function App() {
             setGlobalState,
          }}
       >
-         <AudioProvider src={`./song/${nowPlaying.song}.mp3`}>
+         <AudioProvider src={nowPlaying.song}>
             <StyledApp>
                <ResetStyle />
                <GlobalStyle />
