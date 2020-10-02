@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/react-mp3-player/static/css/main.530b94fc.chunk.css",
+    "main.css": "/react-mp3-player/static/css/main.248e3d1b.chunk.css",
     "main.js": "/react-mp3-player/static/js/main.c8ca82cf.chunk.js",
     "main.js.map": "/react-mp3-player/static/js/main.c8ca82cf.chunk.js.map",
     "runtime-main.js": "/react-mp3-player/static/js/runtime-main.9fe38444.js",
@@ -8,9 +8,9 @@
     "static/js/2.c79118f2.chunk.js": "/react-mp3-player/static/js/2.c79118f2.chunk.js",
     "static/js/2.c79118f2.chunk.js.map": "/react-mp3-player/static/js/2.c79118f2.chunk.js.map",
     "index.html": "/react-mp3-player/index.html",
-    "precache-manifest.8a5266fd7e81c1723205453684a37a15.js": "/react-mp3-player/precache-manifest.8a5266fd7e81c1723205453684a37a15.js",
+    "precache-manifest.fa81da6baa960b484b5633e6d5fdb390.js": "/react-mp3-player/precache-manifest.fa81da6baa960b484b5633e6d5fdb390.js",
     "service-worker.js": "/react-mp3-player/service-worker.js",
-    "static/css/main.530b94fc.chunk.css.map": "/react-mp3-player/static/css/main.530b94fc.chunk.css.map",
+    "static/css/main.248e3d1b.chunk.css.map": "/react-mp3-player/static/css/main.248e3d1b.chunk.css.map",
     "static/js/2.c79118f2.chunk.js.LICENSE.txt": "/react-mp3-player/static/js/2.c79118f2.chunk.js.LICENSE.txt",
     "static/media/Alan Walker.jpg": "/react-mp3-player/static/media/Alan Walker.6a52c879.jpg",
     "static/media/All Falls Down.txt": "/react-mp3-player/static/media/All Falls Down.7a4966f1.txt",
@@ -42,7 +42,7 @@
   "entrypoints": [
     "static/js/runtime-main.9fe38444.js",
     "static/js/2.c79118f2.chunk.js",
-    "static/css/main.530b94fc.chunk.css",
+    "static/css/main.248e3d1b.chunk.css",
     "static/js/main.c8ca82cf.chunk.js"
   ]
 }
