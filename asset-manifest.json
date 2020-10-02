@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/react-mp3-player/static/css/main.5be7a441.chunk.css",
-    "main.js": "/react-mp3-player/static/js/main.f89b7372.chunk.js",
-    "main.js.map": "/react-mp3-player/static/js/main.f89b7372.chunk.js.map",
+    "main.js": "/react-mp3-player/static/js/main.34ce1b78.chunk.js",
+    "main.js.map": "/react-mp3-player/static/js/main.34ce1b78.chunk.js.map",
     "runtime-main.js": "/react-mp3-player/static/js/runtime-main.9fe38444.js",
     "runtime-main.js.map": "/react-mp3-player/static/js/runtime-main.9fe38444.js.map",
     "static/js/2.d690eedb.chunk.js": "/react-mp3-player/static/js/2.d690eedb.chunk.js",
     "static/js/2.d690eedb.chunk.js.map": "/react-mp3-player/static/js/2.d690eedb.chunk.js.map",
     "index.html": "/react-mp3-player/index.html",
-    "precache-manifest.378b93ce7293a351e580ebd07b2ecdfc.js": "/react-mp3-player/precache-manifest.378b93ce7293a351e580ebd07b2ecdfc.js",
+    "precache-manifest.d770f70e9475e152dca57a96078676ad.js": "/react-mp3-player/precache-manifest.d770f70e9475e152dca57a96078676ad.js",
     "service-worker.js": "/react-mp3-player/service-worker.js",
     "static/css/main.5be7a441.chunk.css.map": "/react-mp3-player/static/css/main.5be7a441.chunk.css.map",
     "static/js/2.d690eedb.chunk.js.LICENSE.txt": "/react-mp3-player/static/js/2.d690eedb.chunk.js.LICENSE.txt",
@@ -44,6 +44,6 @@
     "static/js/runtime-main.9fe38444.js",
     "static/js/2.d690eedb.chunk.js",
     "static/css/main.5be7a441.chunk.css",
-    "static/js/main.f89b7372.chunk.js"
+    "static/js/main.34ce1b78.chunk.js"
   ]
 }
