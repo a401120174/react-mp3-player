@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "b3f6a544748aa5c846cbf6ef247b632c",
+    "revision": "e9ba34b1231fbc1ff12df3f15f9a1fb6",
     "url": "/react-mp3-player/index.html"
   },
   {
-    "revision": "a45d848557fc3717ae6d",
-    "url": "/react-mp3-player/static/css/main.248e3d1b.chunk.css"
+    "revision": "f9ea1c6e19fc0dffc344",
+    "url": "/react-mp3-player/static/css/main.5be7a441.chunk.css"
   },
   {
-    "revision": "56e14b9a07df82c4049c",
-    "url": "/react-mp3-player/static/js/2.c79118f2.chunk.js"
+    "revision": "78bcfbc25e389bc5aaf8",
+    "url": "/react-mp3-player/static/js/2.d690eedb.chunk.js"
   },
   {
     "revision": "c64c486544348f10a6d6c716950bc223",
-    "url": "/react-mp3-player/static/js/2.c79118f2.chunk.js.LICENSE.txt"
+    "url": "/react-mp3-player/static/js/2.d690eedb.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "a45d848557fc3717ae6d",
-    "url": "/react-mp3-player/static/js/main.c8ca82cf.chunk.js"
+    "revision": "f9ea1c6e19fc0dffc344",
+    "url": "/react-mp3-player/static/js/main.f89b7372.chunk.js"
   },
   {
     "revision": "d135570e2e372fcc07ae",
@@ -126,5 +126,9 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
     "revision": "5f58ed0012b2879d1440728d0fc919c7",
     "url": "/react-mp3-player/static/media/One More Night.5f58ed00.mp3"
+  },
+  {
+    "revision": "95b7fea745c7d8664cb4f539302568cd",
+    "url": "/react-mp3-player/static/media/animated-sound-bars.95b7fea7.gif"
   }
 ]);
