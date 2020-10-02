@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
-import { useAudio } from "../../context/audioContext";
+import { albumImg } from "../../source";
 
+import { useAudio } from "../../context/audioContext";
 import ContextStore from "../../context/globalContext";
 
 const Wrapper = styled.aside`
@@ -45,9 +46,11 @@ const Li = styled.li`
    }
 `;
 
-const NowPlaying = styled.div`
+const NowPlaying = styled.div.attrs((props) => ({
+   imgUrl: albumImg[props.img],
+}))`
    height: 210px;
-   background-image: url("./react-mp3-player/img/${(props) => props.img}.jpg");
+   background-image: url("${(props) => props.imgUrl}");
    background-size: cover;
    background-position: center;
    display: flex;
@@ -107,10 +110,7 @@ const AsideBar = () => {
          <NowPlaying img={nowPlaying.album} playing={!state.paused}>
             <div className="title">
                Now Playing{" "}
-               <img
-                  src="./react-mp3-player/img/animated-sound-bars.gif"
-                  alt="animated"
-               ></img>
+               <img src="../static/img/animated-sound-bars.gif" alt="animated"></img>
             </div>
             <div className="album">{nowPlaying.album}</div>
             <div className="song">{nowPlaying.song}</div>

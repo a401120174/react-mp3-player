@@ -1,8 +1,9 @@
 import React, { useContext } from "react";
-import { useAudio } from "../../context/audioContext";
 import styled from "styled-components";
 
+import { useAudio } from "../../context/audioContext";
 import ContextStore from "../../context/globalContext";
+import { albumImg } from "../../source";
 
 import ControlBar from "../ControlBar/ControlBar";
 
@@ -29,10 +30,12 @@ const Content = styled.div`
    }
 `;
 
-const Background = styled.div`
+const Background = styled.div.attrs((props) => ({
+   imgUrl: albumImg[props.img],
+}))`
    background-color: green;
    height: 40%;
-   background-image: url("./react-mp3-player/img/${(props) => props.img}.jpg");
+   background-image: url("${(props) => props.imgUrl}");
    background-size: cover;
    background-position: center;
    position: relative;
@@ -156,7 +159,7 @@ const Main = () => {
             <PlayList>
                <MusicDesc>
                   <div className="left">
-                     <img src={`./react-mp3-player/img/${album}.jpg`} alt="album"></img>
+                     <img src={albumImg[album]} alt="album"></img>
                   </div>
                   <div className="mid">
                      <div className="album">{album}</div>

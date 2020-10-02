@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState, createContext, useContext } from "react";
+import { song } from "../source";
 
 const parseTimeRange = (ranges) =>
    ranges.length < 1
@@ -41,7 +42,7 @@ const AudioProvider = ({ src, children }) => {
    }, [src]);
 
    const element = React.createElement("audio", {
-      src: `./react-mp3-player/song/${src}.mp3`,
+      src: song[src].music,
       controls: false,
       id: "audio",
       ref,
@@ -157,19 +158,6 @@ const AudioProvider = ({ src, children }) => {
       },
    };
 
-   //    useEffect(() => {
-   //       const el = ref.current;
-   //       setState({
-   //          paused: el.paused,
-   //       });
-
-   //       controls.setPlaybackRate(startPlaybackRate);
-
-   //       if (autoPlay && el.paused) {
-   //          controls.play();
-   //       }
-   //    }, [src]);
-
    return (
       <AudioContext.Provider
          value={{
@@ -187,131 +175,3 @@ const useAudio = () => useContext(AudioContext);
 
 export { useAudio };
 export default AudioProvider;
-
-// export default ({ src, autoPlay = false, startPlaybackRate = 1 }) => {
-//    const [state, setOrgState] = useState({
-//       buffered: {
-//          start: 0,
-//          end: 0,
-//       },
-//       time: "00:00",
-//       duration: "00:00",
-//       paused: true,
-//       waiting: false,
-//       playbackRate: 1,
-
-//       endedCallback: null,
-//    });
-//    const setState = (partState) => setOrgState({ ...state, ...partState });
-//    const ref = useRef(null);
-
-//    const element = React.createElement("audio", {
-//       src,
-//       controls: false,
-//       ref,
-//       onPlay: () => setState({ paused: false }),
-//       onPause: () => setState({ paused: true }),
-//       onWaiting: () => setState({ waiting: true }),
-//       onPlaying: () => setState({ waiting: false }),
-//       onEnded: state.endedCallback,
-//       onDurationChange: () => {
-//          const el = ref.current;
-//          if (!el) {
-//             return;
-//          }
-//          const { duration, buffered } = el;
-//          setState({
-//             duration: toTimeStr(duration),
-//             buffered: parseTimeRange(buffered),
-//          });
-//       },
-//       onTimeUpdate: () => {
-//          const el = ref.current;
-//          if (!el) {
-//             return;
-//          }
-//          console.log(el.currentTime);
-//          console.log(toTimeStr(el.currentTime));
-
-//          setState({ time: toTimeStr(el.currentTime) });
-//       },
-//       onProgress: () => {
-//          const el = ref.current;
-//          if (!el) {
-//             return;
-//          }
-//          setState({ buffered: parseTimeRange(el.buffered) });
-//       },
-//    });
-
-//    let lockPlay = false;
-
-//    const controls = {
-//       play: () => {
-//          const el = ref.current;
-//          if (!el) {
-//             return undefined;
-//          }
-
-//          if (!lockPlay) {
-//             const promise = el.play();
-//             const isPromise = typeof promise === "object";
-
-//             if (isPromise) {
-//                lockPlay = true;
-//                const resetLock = () => {
-//                   lockPlay = false;
-//                };
-//                promise.then(resetLock, resetLock);
-//             }
-
-//             return promise;
-//          }
-//          return undefined;
-//       },
-//       pause: () => {
-//          const el = ref.current;
-//          if (el && !lockPlay) {
-//             return el.pause();
-//          }
-//       },
-//       seek: (time) => {
-//          const el = ref.current;
-//          if (!el || state.duration === undefined) {
-//             return;
-//          }
-//          time = Math.min(state.duration, Math.max(0, time));
-//          el.currentTime = time || 0;
-//       },
-//       // 設定播放速度
-//       setPlaybackRate: (rate) => {
-//          const el = ref.current;
-//          if (!el || state.duration === undefined) {
-//             return;
-//          }
-
-//          setState({
-//             playbackRate: rate,
-//          });
-//          el.playbackRate = rate;
-//       },
-//       setEndedCallback: (callback) => {
-//          setState({ endedCallback: callback });
-//       },
-//    };
-
-//    useEffect(() => {
-//       const el = ref.current;
-//       setState({
-//          paused: el.paused,
-//       });
-
-//       controls.setPlaybackRate(startPlaybackRate);
-
-//       if (autoPlay && el.paused) {
-//          controls.play();
-//       }
-//    }, [src]);
-
-//    return { element, state, controls };
-// };

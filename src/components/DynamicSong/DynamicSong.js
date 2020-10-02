@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useAudio } from "../../context/audioContext";
+import { song } from "../../source";
 
 const StyledDynamicSong = styled.div`
    transition: 0.5s;
@@ -27,9 +28,10 @@ const DynamicSong = () => {
    const [songArr, setSongArr] = useState([]);
 
    useEffect(() => {
+      if (!state.src) return;
       const getText = async () => {
          setLoading(true);
-         fetch(`./react-mp3-player/lrc/${state.src}.txt`)
+         fetch(song[state.src].lrc)
             .then((r) => r.text())
             .then((text) => {
                const songArr = text.split("\n").map((str) => {
