@@ -9,7 +9,7 @@ const StylesProgress = styled.div`
 
 const StyledCircle = styled.div.attrs((props) => ({
    style: {
-      left: props.percent > 98 ? 98 : props.percent + "%",
+      left: props.percent > 98 ? "98%" : props.percent + "%",
    },
 }))`
    width: 10px;
